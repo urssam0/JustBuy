@@ -1,0 +1,251 @@
+<html lang="en">
+
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width = device-width, initial-scale = 1, shrink-to-fit = no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <title>Login Page</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+                html {
+                        font-size: 62.5%;
+                }
+
+                * {
+                        margin: 0;
+                        padding: 0;
+                        box-sizing: border-box;
+                        font-family: "poppins,sans-sarif";
+                }
+
+                body {
+                        background: url("IMAGES/wall4.jpg") no-repeat;
+                        background-position: center;
+                        background-size: cover;
+                        width: 100%;
+                }
+
+                .container {
+                        position: relative;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        padding-top: 5rem;
+                        padding-bottom: 1rem;
+                }
+
+                .form-box {
+                        position: relative;
+                        width: 40rem;
+                        height: 50rem;
+                        border: .2rem solid gold;
+                        border-radius: 2rem;
+                        backdrop-filter: blur(1.5rem);
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                }
+
+                .form-box h2 {
+                        color: #fff;
+                        text-align: center;
+                        font-size: 3.2rem;
+
+                }
+
+                .form-box .input-box {
+                        position: relative;
+                        margin: 3rem 0;
+                        width: 31rem;
+                        border-bottom: .2rem solid #fff;
+
+                }
+
+                .form-box .input-box input {
+                        width: 100%;
+                        height: 3.5rem;
+                        background: transparent;
+                        border: none;
+                        outline: none;
+                        padding: 0 2rem 0 .5rem;
+                        color: #fff;
+                        font-size: 1.6rem;
+                }
+
+                input ::placeholder {
+                        color: #fff;
+
+                }
+
+                .btn {
+                        color: #fff;
+                        background: blue;
+                        width: 100%;
+                        height: 5rem;
+                        border-radius: .5rem;
+                        outline: none;
+                        border: 1.7rem;
+                        font-size: 1.7rem;
+                        cursor: pointer;
+                        box-shadow: .3rem 0 1rem rgba(0, 0, 0, 5);
+                }
+
+
+                .group {
+                        display: flex;
+                        justify-content: space-between;
+
+                }
+
+                .group span a {
+                        color: #fff;
+                        position: relative;
+                        top: 1rem;
+                        text-decoration: none;
+                        font-weight: 50rem;
+
+                }
+
+                .group a:focus {
+                        text-decoration: underline;
+                }
+
+                @media (max-width: 1200px) {
+                        html {
+                                font-size: 95%;
+                        }
+                }
+
+                @media (max-width: 998px) {
+                        html {
+                                font-size: 85%;
+                        }
+                }
+
+                @media (max-width: 768px) {
+                        html {
+                                font-size: 75%;
+                        }
+                }
+
+                @media (max-width: 600px) {
+                        html {
+                                font-size: 65%;
+                        }
+                }
+
+                @media (max-width: 480px) {
+                        html {
+                                font-size: 55%;
+                        }
+                }
+
+                @media (max-width: 320px) {
+                        html {
+                                font-size: 45%;
+                        }
+                }
+
+                @media (max-width: 290px) {
+                        html {
+                                font-size: 35%;
+                        }
+                }
+
+                @media (max-width: 235px) {
+                        html {
+                                font-size: 25%;
+                        }
+                }
+
+                @media (max-width: 170px) {
+                        html {
+                                font-size: 15%;
+                        }
+                }
+
+                @media (max-width: 110px) {
+                        html {
+                                font-size: 5%;
+                        }
+                }
+        </style>
+</head>
+
+<body>
+<div class="container">
+        <div class="form-box">
+                <form action="index.html" name="formfill" target="_blank">
+                        <h2>Login...</h2>
+                        <div class="input-box">
+                                <i class="fa fa-user" style="font-size: 30px;"></i>
+                                <input type="email" name="Email" placeholder="Email" required
+                                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                        </div>
+                        <div class="input-box">
+                                <i class="fa fa-lock" style="font-size: 30px;"></i> 
+                                <input type="password" name="password" id="pass" placeholder="password" required
+                                        onkeyup="validate_password()">
+                        </div>
+                        <div class="input-box">
+                                <i class="fa fa-lock" style="font-size: 30px;"></i> 
+                                <input type="password" name="password" id="confirm_pass" placeholder="Current password"
+                                        required onkeyup="validate_password()">
+                        </div>
+                        <span id="wrong_pass_alert"></span>
+                        <div class="hero">
+                                <button type="submit" id="create" class="btn" value="Login"
+                                        onclick="wrong_pass_alert()">Login
+                        </div>
+                        <div class="group">
+                                <span><a href="a">Forget-password</a></span>
+                                <span><a href="regis.html">Sign Up</a></span>
+                        </div>
+                </form>
+        </div>
+</div>
+<script>
+        function validate_password() {
+
+                var pass = document.getElementById('pass').value;
+                var confirm_pass = document.getElementById('confirm_pass').value;
+                if (pass != confirm_pass) {
+                        document.getElementById('wrong_pass_alert').style.color = 'red';
+                        document.getElementById('wrong_pass_alert').innerHTML
+                                = '☒ Use same password';
+                        document.getElementById('create').disabled = true;
+                        document.getElementById('create').style.opacity = (0.4);
+                } else {
+                        document.getElementById('wrong_pass_alert').style.color = 'green';
+                        document.getElementById('wrong_pass_alert').innerHTML =
+                                '🗹 Password Matched';
+                        document.getElementById('create').disabled = false;
+                        document.getElementById('create').style.opacity = (1);
+                }
+        }
+        function wrong_pass_alert() {
+                if (document.getElementById('pass').value != "" &&
+                        document.getElementById('confirm_pass').value != "") {
+                        alert("Your response is submitted");
+                } else {
+                        alert("Please fill all the fields");
+                }
+        function Function() {
+        }
+                var oldpasswprd = document.getElementById('oldPassword').value;
+                var newpassword = document.getElementById('newPassword').value;
+                var confirmpassword = document.getElementById('confirmPassword').value;
+                if (oldPassword == "" || newpassword == "" || confirmpassword == "") {
+                    alert('Please fill all the details');
+                }
+                else if (oldpasswprd == newpassword) {
+                    alert("Old password and New Password cannot be same");
+                }
+                else if (newpassword != confirmpassword) {
+                    alert("password mismatch");
+                }
+            }
+</script>
+</body>
+
+</html>
